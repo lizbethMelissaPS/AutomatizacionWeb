@@ -11,3 +11,5 @@ Característica: Login
     Cuando inicio sesión con las credenciales usuario: "standard_user" y contraseña: "secret_sauce"
     Entonces valido que debería aparecer el título de "Products"
     Y también valido que al menos exista un item
+
+    #probando commit
