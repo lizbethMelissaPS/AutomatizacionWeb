@@ -1,16 +1,12 @@
 package com.nttdata.stepsdefinitions;
 
-import com.nttdata.steps.InventorySteps;
 import com.nttdata.steps.LoginSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.es.Cuando;
-import io.cucumber.java.es.Entonces;
-import io.cucumber.java.es.Y;
 import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
 import static com.nttdata.core.DriverManager.getDriver;
@@ -22,15 +18,10 @@ public class ProducStoreStepsDef {
     private WebDriver driver;
 
 
-    private InventorySteps inventorySteps(WebDriver driver){
-
-        return new InventorySteps(driver);
-    }
-
     @Given("estoy en la página de la tienda")
     public void estoyEnLaPáginaDeLaTienda() {
         driver = getDriver();
-        driver.get("https://qalab.bensg.com/store");
+        driver.get("https://qalab.bensg.com/store/pe/iniciar-sesion?back=https%3A%2F%2Fqalab.bensg.com%2Fstore%2Fpe%2F");
         driver.manage().window().maximize();
         screenShot();
     }
@@ -89,7 +80,6 @@ public class ProducStoreStepsDef {
         double actualTotal = LoginSteps.calculateTotal(expectedTotal);
         Assert.assertEquals(expectedTotal, actualTotal, 0.01);
     }
-
 
 
 
