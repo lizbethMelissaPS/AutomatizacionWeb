@@ -17,6 +17,11 @@ public class LoginPage {
     public static By cantidadInput = By.id("quantity_wanted");
     public static By cantidadTotal = By.cssSelector(".quantity_wanted");
 
+    public static By popupMessage = By.xpath("/html/body/div[1]/div");
+
+
+    public static By totalAmount = By.className(".product-total .value");
+
 
 }
 
