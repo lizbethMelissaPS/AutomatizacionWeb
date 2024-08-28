@@ -32,7 +32,6 @@ public class LoginSteps {
 
     }
 
-
     /**
      * Escribir el password
      * @param password el password del usuario
@@ -48,4 +47,29 @@ public class LoginSteps {
         this.driver.findElement(LoginPage.loginButton).click();
     }
 
+
+
+
+    public void typeCategoria(String categoria) {
+        this.driver.findElement(LoginPage.xpathCategoria).click();
+    }
+
+
+    public void typeSubCategoria(String subcategoria) {
+        this.driver.findElement(LoginPage.xpathSubCategoria).click();
+    }
+
+
+    public void agregoPrimerUnidad(int cantidad) {
+        this.driver.findElement(LoginPage.agregar).click();
+    }
+
+    // Asumir que hay un campo de cantidad para agregar el número de unidades
+    public void typeCantidad(int cantidad) {
+        this.driver.findElement(LoginPage.cantidadInput).clear();
+    }
+
+    public void cantidaTotal(int cantidad) {
+        this.driver.findElement(LoginPage.cantidadTotal).sendKeys(String.valueOf(cantidad));
+    }
 }

@@ -4,8 +4,8 @@ import com.nttdata.steps.InventorySteps;
 import com.nttdata.steps.LoginSteps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import io.cucumber.java.es.Cuando;
-import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
 import io.cucumber.java.es.Y;
 import org.junit.jupiter.api.Assertions;
@@ -34,7 +34,6 @@ public class ProducStoreStepsDef {
     }
 
 
-
     @Cuando("inicio sesión con las credenciales usuario: {string} y contraseña: {string}")
     public void inicio_sesión_con_las_credenciales_usuario_y_contraseña(String user, String password) {
         LoginSteps loginSteps = new LoginSteps(driver);
@@ -43,6 +42,41 @@ public class ProducStoreStepsDef {
         loginSteps.login();
         screenShot();
     }
+
+
+
+    @And("me logueo con mi usuario {string} y clave {string}")
+    public void meLogueoConMiUsuarioYClave(String usuario, String clave) {
+        LoginSteps loginSteps = new LoginSteps(driver);
+        loginSteps.typeUser(usuario);
+        loginSteps.typePassword(clave);
+        loginSteps.login();
+        screenShot();
+    }
+
+
+
+    @When("navego a la categoria {string} y subcategoria {string}")
+    public void navegoALaCategoriaYSubcategoria(String categoria, String subcategoria) {
+        LoginSteps loginSteps = new LoginSteps(driver);
+        loginSteps.typeCategoria(categoria);
+        loginSteps.typeSubCategoria(subcategoria);
+        screenShot();
+    }
+
+
+    @And("agrego {int} unidades del primer producto al carrito")
+    public void agregoUnidadesDelPrimerProductoAlCarrito(int cantidad) {
+        LoginSteps loginSteps = new LoginSteps(driver);
+        loginSteps.agregoPrimerUnidad(cantidad);
+        loginSteps.typeCantidad(cantidad);
+        loginSteps.cantidaTotal(cantidad);
+
+        screenShot();
+    }
+
+
+
     @Entonces("valido que debería aparecer el título de {string}")
     public void valido_que_debería_aparecer_el_título_de(String expectedTitle) {
         String title =  inventorySteps(driver).getTitle();
@@ -62,17 +96,6 @@ public class ProducStoreStepsDef {
             throw new RuntimeException(e);
         }
     }
-
-
-    @And("me logueo con mi usuario {string} y clave {string}")
-    public void meLogueoConMiUsuarioYClave(String usuario, String clave) {
-        LoginSteps loginSteps = new LoginSteps(driver);
-        loginSteps.typeUser(usuario);
-        loginSteps.typePassword(clave);
-        loginSteps.login();
-        screenShot();
-    }
-
 
 }
 
