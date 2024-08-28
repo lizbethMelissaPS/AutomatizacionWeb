@@ -12,4 +12,3 @@ Característica: Login
     Entonces valido que debería aparecer el título de "Products"
     Y también valido que al menos exista un item
 
-    #probando commit
